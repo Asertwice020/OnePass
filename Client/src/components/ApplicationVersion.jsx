@@ -1,4 +1,4 @@
-import { CLIENT } from "../constants"
+import { CLIENT } from "../production-constants"
 
 const ApplicationVersion = () => {
   return (

@@ -2,7 +2,7 @@ import CardWrapper from '../utils/CardWrapper';
 import { editProfile, checkUsernameAvailability } from '../api/axios';
 import { useState } from 'react';
 import { debounce, checkUsernameValidity } from '../utils/apiCallingHelper';
-import { CLIENT } from '../constants';
+import { CLIENT } from '../production-constants';
 
 const EditProfilePage = () => {
   const [username, setUsername] = useState("");
