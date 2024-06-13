@@ -9,9 +9,16 @@ const validateEnvVar = (varName, expectedType) => {
   }
 
   // Convert before type check
-  const convertedValue = expectedType === "number" ? Number(value) : value;
+  let convertedValue;
+  if (expectedType === "number") {
+    convertedValue = Number(value);
+  } else if (expectedType === "array") {
+    convertedValue = value.split(",").map((domain) => domain.trim());
+  } else {
+    convertedValue = value;
+  }
 
-  if (typeof convertedValue !== expectedType) {
+  if (typeof convertedValue !== expectedType && !Array.isArray(convertedValue)) {
     throw new Error(
       `Invalid type for environment variable: ${varName}. Expected ${expectedType}, got ${typeof value}`,
     );
@@ -25,7 +32,7 @@ const configEnv = {
 
   MONGODB_URI: validateEnvVar("MONGODB_URI", "string"),
 
-  CLIENT_CORS_ORIGIN: validateEnvVar("CLIENT_CORS_ORIGIN", "string"),
+  CLIENT_CORS_ORIGIN: validateEnvVar("CLIENT_CORS_ORIGIN", "array"),
 
   CRYPTO_ENCRYPTION_SECRET_KEY: validateEnvVar("CRYPTO_ENCRYPTION_SECRET_KEY", "string"),
 
