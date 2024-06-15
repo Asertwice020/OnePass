@@ -36,6 +36,7 @@ axiosInstance.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
+  // (error) => {console.log(`i am rejecting the error even if it is not a network error`); Promise.reject(error)}
 );
 
 const handleErrorResponse = async (error) => {

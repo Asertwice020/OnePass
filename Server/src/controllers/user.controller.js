@@ -78,8 +78,6 @@ const accessTokenCookieOptions = {
   httpOnly: true,
   secure: true,
   sameSite: "None",
-  domain: "onepass-vuh7.onrender.com",
-  // path: "/",
   expires: new Date(Date.now() + accessTokenExpiryTime),
 };
 
@@ -87,8 +85,6 @@ const refreshTokenCookieOptions = {
   httpOnly: true,
   secure: true,
   sameSite: "None",
-  domain: "onepass-vuh7.onrender.com",
-  path: "/",
   expires: new Date(Date.now() + refreshTokenExpiryTime),
 };
 
