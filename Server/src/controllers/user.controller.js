@@ -71,16 +71,25 @@ const generateAccessAndRefreshTokens = async (userId) => {
   }
 };
 
+const accessTokenExpiryTime = configEnv.ACCESS_TOKEN_MAXAGE_IN_MS;
+const refreshTokenExpiryTime = configEnv.REFRESH_TOKEN_MAXAGE_IN_MS;
+
 const accessTokenCookieOptions = {
   httpOnly: true,
   secure: true,
-  maxAge: configEnv.ACCESS_TOKEN_MAXAGE_IN_MS,
+  sameSite: "None",
+  domain: "onepass-vuh7.onrender.com",
+  // path: "/",
+  expires: new Date(Date.now() + accessTokenExpiryTime),
 };
 
 const refreshTokenCookieOptions = {
   httpOnly: true,
   secure: true,
-  maxAge: configEnv.REFRESH_TOKEN_MAXAGE_IN_MS,
+  sameSite: "None",
+  domain: "onepass-vuh7.onrender.com",
+  path: "/",
+  expires: new Date(Date.now() + refreshTokenExpiryTime),
 };
 
 const registerUser = asyncHandler(async (req, res) => {
