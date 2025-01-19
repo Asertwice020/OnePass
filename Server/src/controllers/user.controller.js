@@ -310,7 +310,7 @@ const generateNewAccessToken = asyncHandler(async (req, res) => {
       req?.cookies?.refreshToken || req?.body?.refreshToken;
 
     // LOG
-    // console.log('BEFORE\n',{refreshToken : incomingRefreshToken || req?.body?.refreshToken, accessToken : req?.cookies?.accessToken, incomingRefreshToken});
+    console.log('BEFORE\n',{refreshToken : incomingRefreshToken || req?.body?.refreshToken, accessToken : req?.cookies?.accessToken, incomingRefreshToken});
 
     if (!incomingRefreshToken) {
       throw new ApiError(401, "Unauthorized Request!");
